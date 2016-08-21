@@ -203,4 +203,19 @@ public abstract class Problem {
 
         return ret;
     }
+
+    /**
+     * In number theory, an abundant number or excessive number
+     * is a number for which the sum of its proper divisors is greater than the number itself.
+     * The integer 12 is the first abundant number.
+     * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16.
+     * The amount by which the sum exceeds the number is the abundance.
+     * The number 12 has an abundance of 4, for example.
+     *
+     * @param number to resolve.
+     * @return {@link Boolean#TRUE} abundant number, otherwise {@link Boolean#FALSE} non abundant number.
+     */
+    boolean isAbundant(int number) {
+        return number < sumDividers(number);
+    }
 }
