@@ -13,6 +13,6 @@ package cz.hlubyluk.euler.problems;
 // TODO: 24.07.16 implement
 public class Problem5 extends Problem{
     public void solve() {
-        System.out.println("Not implemented");
+        System.out.println(NOT_IMPLEMENTED);
     }
 }

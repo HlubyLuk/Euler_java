@@ -22,6 +22,6 @@ package cz.hlubyluk.euler.problems;
 public class Problem17 extends Problem {
     @Override
     public void solve() {
-        System.out.println("Not implemented");
+        System.out.println(NOT_IMPLEMENTED);
     }
 }
