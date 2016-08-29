@@ -16,13 +16,25 @@ package cz.hlubyluk.euler.problems;
  * Created by HlubyLuk on 22.08.16.
  */
 public class Problem24 extends Problem {
-    private static final int[] START_SEQUENCE = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    private static final int[] SEQUENCE = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     private static final int STOP = 1000000;
-//    private static final int[] START_SEQUENCE = {1, 2, 3, 4};
+//    private static final int[] SEQUENCE = {0, 1, 2};
+//    private static final int STOP = 6;
+//    Wikipedia example https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order
+//    private static final int[] SEQUENCE = {1, 2, 3, 4};
 //    private static final int STOP = 24;
 
     @Override
     public void solve() {
-        System.out.println(NOT_IMPLEMENTED);
+        int j = 1;
+        while (j < STOP && nextLexicographicPermutations(SEQUENCE)) {
+            j++;
+        }
+        StringBuilder tmp = new StringBuilder();
+        for (int i : SEQUENCE) {
+            tmp.append(i);
+        }
+
+        System.out.println(tmp.toString());
     }
 }

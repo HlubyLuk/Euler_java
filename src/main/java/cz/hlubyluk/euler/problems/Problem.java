@@ -219,4 +219,42 @@ public abstract class Problem {
     boolean isAbundant(int number) {
         return number < sumDividers(number);
     }
+
+    /**
+     * Transform input array into next lexicographic permutation.
+     *
+     * @param sequence input for modification.
+     * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise {@link Boolean#FALSE}.
+     */
+    boolean nextLexicographicPermutations(int[] sequence) {
+        int i = sequence.length - 2;
+        while (i > 0 && sequence[i] >= sequence[i + 1]) {
+            i--;
+        }
+
+        int j = sequence.length - 1;
+        while (j > 0 && sequence[j] <= sequence[i]) {
+            j--;
+        }
+
+        int tmp = sequence[i];
+        sequence[i] = sequence[j];
+        sequence[j] = tmp;
+
+        i++;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int z = i; z < sequence.length; z++) {
+            stringBuilder.append(sequence[z]);
+        }
+
+        String reverse = stringBuilder.reverse().toString();
+        for (char character : reverse.toCharArray()) {
+            sequence[i] = character - '0';
+
+            i++;
+        }
+
+        return true;
+    }
 }
