@@ -10,7 +10,8 @@ import java.util.TreeSet;
  * Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem {
-    protected static final String NOT_IMPLEMENTED = "Not implemented!";
+    static final String NOT_IMPLEMENTED = "Not implemented!";
+
     /**
      * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])} method.
      */
