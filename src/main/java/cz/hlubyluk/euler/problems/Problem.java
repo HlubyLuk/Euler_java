@@ -242,18 +242,15 @@ public abstract class Problem {
         sequence[i] = sequence[j];
         sequence[j] = tmp;
 
-        i++;
+        int x = i + 1, y = sequence.length - 1;
+        int[] clone = sequence.clone();
+        while (x < y) {
+            tmp = clone[x];
+            sequence[x] = clone[y];
+            sequence[y] = tmp;
 
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int z = i; z < sequence.length; z++) {
-            stringBuilder.append(sequence[z]);
-        }
-
-        String reverse = stringBuilder.reverse().toString();
-        for (char character : reverse.toCharArray()) {
-            sequence[i] = character - '0';
-
-            i++;
+            x++;
+            y--;
         }
 
         return true;
