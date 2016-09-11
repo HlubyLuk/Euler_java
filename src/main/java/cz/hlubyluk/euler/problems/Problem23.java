@@ -32,7 +32,7 @@ public class Problem23 extends Problem {
     @Override
     public void solve() {
         BigInteger ret = BigInteger.ZERO;
-        boolean[] abundants_bool = new boolean[STOP + 1];
+        boolean[] abundants_bool = new boolean[STOP];
         Set<Integer> abundant_sums = new TreeSet<>();
 
         for (int i = 0; i < STOP; i++) {

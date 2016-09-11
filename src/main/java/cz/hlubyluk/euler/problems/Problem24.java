@@ -20,7 +20,7 @@ public class Problem24 extends Problem {
     private static final int STOP = 1000000;
 //    private static final int[] SEQUENCE = {0, 1, 2};
 //    private static final int STOP = 6;
-//    Wikipedia example https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order
+//    /** Wikipedia example https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order */
 //    private static final int[] SEQUENCE = {1, 2, 3, 4};
 //    private static final int STOP = 24;
 
