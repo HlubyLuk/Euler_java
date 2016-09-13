@@ -38,6 +38,7 @@ public class App {
         new Problem23().solve();
         new Problem24().solve();
         new Problem25().solve();
+        new Problem26().solve();
 
         Instant finish = Instant.now();
 
