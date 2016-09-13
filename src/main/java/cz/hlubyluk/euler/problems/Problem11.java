@@ -1,6 +1,8 @@
 package cz.hlubyluk.euler.problems;
 
-import java.util.Arrays;
+import cz.hlubyluk.euler.entity.Coordinate;
+import cz.hlubyluk.euler.entity.SubMatrix;
+
 import java.util.TreeSet;
 
 /**
@@ -75,12 +77,14 @@ public class Problem11 extends Problem {
             }
         }
 
-        TreeSet<SubMatrix> products = new TreeSet<SubMatrix>();
+        TreeSet<SubMatrix> products = new TreeSet<>();
 
         for (int x = 0; x <= MATRIX_ROW - SUB_MATRIX; x++) {
             for (int y = 0; y <= MATRIX_COLUMN - SUB_MATRIX; y++) {
                 Coordinate coordinate = new Coordinate(x, y);
                 SubMatrix subMatrix = new SubMatrix(coordinate);
+                subMatrix.setMatrix(parsedMatrix);
+                subMatrix.setEdgeLength(SUB_MATRIX);
                 subMatrix.computeMaxProduct();
 
                 products.add(subMatrix);
@@ -88,201 +92,5 @@ public class Problem11 extends Problem {
         }
 
         System.out.println(products.last());
-    }
-
-    /**
-     * Subset of {@link #parsedMatrix}.
-     */
-    private class SubMatrix implements Comparable<SubMatrix> {
-        private final Coordinate startPoint;
-        /**
-         * row, column, main diagonal, secondary diagonal
-         */
-        private int[] products = new int[4];
-        /**
-         * row, column, main diagonal, secondary diagonal
-         */
-        private int direction;
-
-        /**
-         * Constructor.
-         *
-         * @param startPoint {@link Coordinate}.
-         */
-        SubMatrix(Coordinate startPoint) {
-            this.startPoint = startPoint;
-        }
-
-        /**
-         * Start of computing products of {@link SubMatrix}.
-         */
-        private void computeMaxProduct() {
-            int row = startPoint.getX();
-            int column = startPoint.getY();
-
-            products[0] = rowsMax(row, column);
-            products[1] = columnMax(row, column);
-            products[2] = mainDiagonalMax(row);
-            products[3] = otherDiagonal(row, column);
-        }
-
-        /**
-         * Compute product of other diagonal.
-         *
-         * @param row    start from row.
-         * @param column start from column.
-         * @return sum of other diagonal.
-         */
-        private int otherDiagonal(int row, int column) {
-            return parsedMatrix[row][column + 3] *
-                    parsedMatrix[row + 1][column + 2] *
-                    parsedMatrix[row + 2][column + 1] *
-                    parsedMatrix[row + 3][column];
-
-        }
-
-        /**
-         * Compute product of main diagonal.
-         *
-         * @param row start from row.
-         * @return sum of main diagonal.
-         */
-        private int mainDiagonalMax(int row) {
-            int ret = 1;
-
-            for (int i = row; i < SUB_MATRIX; i++) {
-                ret *= parsedMatrix[i][i];
-            }
-
-            return ret;
-        }
-
-        /**
-         * Compute maximum sum of {@link SubMatrix} in columns.
-         *
-         * @param row    start from row.
-         * @param column start from column.
-         * @return max sum.
-         */
-        private int columnMax(int row, int column) {
-            int ret = Integer.MIN_VALUE;
-
-            for (int y = column; y < column + SUB_MATRIX; y++) {
-                int temp = parsedMatrix[row][y] *
-                        parsedMatrix[row + 1][y] *
-                        parsedMatrix[row + 2][y] *
-                        parsedMatrix[row + 3][y];
-
-                if (ret < temp) {
-                    ret = temp;
-                }
-            }
-
-            return ret;
-        }
-
-        /**
-         * Compute maximum sum of {@link SubMatrix} in rows.
-         *
-         * @param row    start from row.
-         * @param column start from column.
-         * @return max sum.
-         */
-        private int rowsMax(int row, int column) {
-            int ret = Integer.MIN_VALUE;
-
-            for (int x = row; x < row + SUB_MATRIX; x++) {
-                int temp = parsedMatrix[x][column] *
-                        parsedMatrix[x][column + 1] *
-                        parsedMatrix[x][column + 2] *
-                        parsedMatrix[x][column + 3];
-
-                if (ret < temp) {
-                    ret = temp;
-                }
-            }
-
-            return ret;
-        }
-
-        /**
-         * Getter of maximum sum.
-         *
-         * @return max sum.
-         */
-        int getMaxProduct() {
-            int ret = Integer.MIN_VALUE;
-
-            for (int i = 0; i < products.length; i++) {
-                if (ret < products[i]) {
-                    ret = products[i];
-                    direction = i;
-                }
-            }
-
-            return ret;
-        }
-
-        @Override
-        public String toString() {
-            return "SubMatrix{" +
-                    "startPoint=" + startPoint +
-                    ", products=" + Arrays.toString(products) +
-                    ", maxProduct=" + getMaxProduct() +
-                    ", direction=" + direction +
-                    '}';
-        }
-
-        public int compareTo(SubMatrix o) {
-            int x = getMaxProduct();
-            int y = o.getMaxProduct();
-
-            return (x < y) ? -1 : ((x == y) ? 0 : 1);
-        }
-    }
-
-    /**
-     * Southeast conner of {@link SubMatrix}.
-     */
-    private class Coordinate {
-        private final int x;
-        private final int y;
-
-        /**
-         * Constructor.
-         *
-         * @param x coordinate.
-         * @param y coordinate.
-         */
-        Coordinate(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        /**
-         * Getter.
-         *
-         * @return x coordinate.
-         */
-        int getX() {
-            return x;
-        }
-
-        /**
-         * Getter.
-         *
-         * @return y coordinate.
-         */
-        int getY() {
-            return y;
-        }
-
-        @Override
-        public String toString() {
-            return "Coordinate{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
-        }
     }
 }

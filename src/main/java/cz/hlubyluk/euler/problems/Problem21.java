@@ -17,11 +17,13 @@ package cz.hlubyluk.euler.problems;
  */
 public class Problem21 extends Problem {
 
+    private static final int STOP = 10000;
+
     @Override
     public void solve() {
         int ret = 0;
 
-        for (int i = 1; i < 10000; i++) {
+        for (int i = 1; i < STOP; i++) {
             if (isAmicable(i)) {
                 ret += i;
             }

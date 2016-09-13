@@ -1,10 +1,5 @@
 package cz.hlubyluk.euler.problems;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Maximum path sum I
  * Problem 18
@@ -37,7 +32,9 @@ import java.util.Map;
  * 63  66  04  68  89  53  67  30  73  16  69  87  40  31
  * 04  62  98  27  23  09  70  98  73  93  38  53  60  04  23
  * <p>
- * NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route. However, Problem 67, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)
+ * NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route.
+ * However, Problem 67, is the same challenge with a triangle containing one-hundred rows;
+ * it cannot be solved by brute force, and requires a clever method! ;o)
  * <p>
  * Created by HlubyLuk on 13.08.16.
  */
@@ -92,34 +89,5 @@ public class Problem18 extends Problem {
         }
 
         return ret;
-    }
-
-    private class Coordinate {
-        private int x, y;
-
-        public Coordinate(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("x = %d, y = %d", x, y);
-        }
-
-        private class Triangle {
-            private Coordinate a, b, c;
-
-            public Triangle(Coordinate a, Coordinate b, Coordinate c) {
-                this.a = a;
-                this.b = b;
-                this.c = c;
-            }
-
-            @Override
-            public String toString() {
-                return String.format("a = %s, b = %s, c = %s", a, b, c);
-            }
-        }
     }
 }

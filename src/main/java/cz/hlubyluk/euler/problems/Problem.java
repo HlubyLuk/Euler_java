@@ -48,7 +48,7 @@ public abstract class Problem {
      * @return booleans array where {@link Boolean#FALSE} is prime number
      * {@link Boolean#TRUE} is divisible with prime number
      */
-    private boolean[] sieveOfEratosthenes(int number) {
+    boolean[] sieveOfEratosthenes(int number) {
         boolean[] sieves = new boolean[number + 1];
         sieves[0] = sieves[1] = true;
 
@@ -91,7 +91,7 @@ public abstract class Problem {
      * @param b number 2.
      * @return greatest common divisor of the given numbers.
      */
-    private int gcd(int a, int b) {
+    int gcd(int a, int b) {
         if (a < 1 || b < 1) {
             throw new IllegalArgumentException("a or b is less than 1!!!");
         }

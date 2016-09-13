@@ -2,7 +2,6 @@ package cz.hlubyluk.euler.problems;
 
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
-import org.joda.time.Weeks;
 
 /**
  * Counting Sundays

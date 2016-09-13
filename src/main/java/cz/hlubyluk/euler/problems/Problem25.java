@@ -38,12 +38,10 @@ public class Problem25 extends Problem {
 
     @Override
     public void solve() {
-        BigInteger f1 = BigInteger.ONE;
-        BigInteger f2 = BigInteger.ONE;
-        BigInteger f3 = BigInteger.ZERO;
+        BigInteger f1 = BigInteger.ONE, f2 = BigInteger.ONE, f3 = BigInteger.ZERO;
         int i = 2;
 
-        while (f3.toString().length() != STOP){
+        while (f3.toString().length() != STOP) {
             f3 = f1.add(f2);
 
             f1 = f2;

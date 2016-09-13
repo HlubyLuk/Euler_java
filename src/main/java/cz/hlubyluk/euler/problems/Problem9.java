@@ -16,12 +16,12 @@ package cz.hlubyluk.euler.problems;
  */
 public class Problem9 extends Problem {
 
-    private static final int MAX = 1000;
+    private static final int STOP = 1000;
 
     public void solve() {
-        for (int a = 1; a < MAX; a++) {
-            for (int b = 1; b < MAX; b++) {
-                int c = MAX - a - b;
+        for (int a = 1; a < STOP; a++) {
+            for (int b = 1; b < STOP; b++) {
+                int c = STOP - a - b;
 
                 if (a < b && b < c && (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2))) {
                     String format = String.format("ret %d", a * b * c);

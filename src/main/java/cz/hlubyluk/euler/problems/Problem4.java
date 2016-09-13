@@ -20,7 +20,7 @@ public class Problem4 extends Problem {
     private static final int TO = 10;
 
     public void solve() {
-        TreeSet<Integer> ret = new TreeSet<Integer>();
+        TreeSet<Integer> ret = new TreeSet<>();
 
         for (int i = FROM; i > TO; i--) {
             for (int j = FROM; j > TO; j--) {

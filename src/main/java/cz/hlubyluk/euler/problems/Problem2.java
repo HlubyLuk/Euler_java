@@ -16,9 +16,6 @@ public class Problem2 extends Problem {
 
     private static final int LIMIT = 4000000;
 
-    public Problem2() {
-    }
-
     @Override
     public void solve() {
         int ret = 0;

@@ -14,13 +14,10 @@ import java.util.TreeSet;
  */
 public class Problem3 extends Problem {
 
-    public Problem3() {
-    }
-
     @Override
     public void solve() {
         long number = 600851475143L;
-        TreeSet<Integer> integers = new TreeSet<Integer>();
+        TreeSet<Integer> integers = new TreeSet<>();
         for (int i = 0; number != 1; i++) {
             if (i != 0 && number % i == 0 && i != 1) {
                 number /= i;

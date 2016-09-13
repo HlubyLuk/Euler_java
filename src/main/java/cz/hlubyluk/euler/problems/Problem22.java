@@ -31,12 +31,6 @@ public class Problem22 extends Problem {
 
         String[] names = getNames();
 
-        if (names == null) {
-            System.out.println(ret);
-
-            return;
-        }
-
         Arrays.parallelSort(names);
 
         for (int i = 0; i < names.length; i++) {
