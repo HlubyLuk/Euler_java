@@ -18,10 +18,9 @@ package cz.hlubyluk.euler.problems;
  * <p>
  * Created by HlubyLuk on 13.08.16.
  */
-// TODO: 13.08.16 implement
 public class Problem17 extends Problem {
     @Override
-    public void solve() {
-        System.out.println(NOT_IMPLEMENTED);
+    public Number solve() {
+        return NOT_IMPLEMENTED;
     }
 }

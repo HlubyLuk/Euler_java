@@ -11,7 +11,7 @@ package cz.hlubyluk.euler.problems;
  * Created by HlubyLuk on 24.07.16.
  */
 public class Problem5 extends Problem {
-    public void solve() {
-        System.out.println(NOT_IMPLEMENTED);
+    public Number solve() {
+        return NOT_IMPLEMENTED;
     }
 }

@@ -27,7 +27,7 @@ package cz.hlubyluk.euler.problems;
  */
 public class Problem12 extends Problem {
     @Override
-    public void solve() {
+    public Number solve() {
         long triangleNumber = 0;
         int i, countOfDividers = 0;
 
@@ -43,6 +43,7 @@ public class Problem12 extends Problem {
                 triangleNumber,
                 countOfDividers
         );
-        System.out.println(format);
+
+        return triangleNumber;
     }
 }

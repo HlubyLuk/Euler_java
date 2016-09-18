@@ -215,7 +215,7 @@ public class Problem13 extends Problem {
                     "53503534226472524250874054075591789781264330331690";
 
     @Override
-    public void solve() {
+    public Number solve() {
         BigInteger ret = BigInteger.ONE;
 
         String[] numbers = LONG_NUMBER.split("[\\n]");
@@ -225,7 +225,7 @@ public class Problem13 extends Problem {
             ret = ret.add(tmp);
         }
 
-        String format = String.format("Original %d, first %d is %s", ret, OUTPUT_LIMIT, ret.toString().substring(0, OUTPUT_LIMIT));
-        System.out.println(format);
+
+        return new BigInteger(ret.toString().substring(0, OUTPUT_LIMIT));
     }
 }

@@ -20,7 +20,7 @@ public class Problem20 extends Problem {
     private static final int LIMIT = 100;
 
     @Override
-    public void solve() {
+    public Number solve() {
         int ret = 0;
 
         BigDecimal factorial = factorial(LIMIT);
@@ -30,6 +30,6 @@ public class Problem20 extends Problem {
             ret += Character.getNumericValue(charAt);
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

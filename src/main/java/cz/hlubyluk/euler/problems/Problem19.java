@@ -24,7 +24,7 @@ import org.joda.time.LocalDate;
  */
 public class Problem19 extends Problem {
     @Override
-    public void solve() {
+    public Number solve() {
         LocalDate start = new LocalDate(1901, 1, 1);
         LocalDate stop = new LocalDate(2000, 12, 31);
         int ret = 0;
@@ -37,6 +37,6 @@ public class Problem19 extends Problem {
             start = start.plusMonths(1);
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

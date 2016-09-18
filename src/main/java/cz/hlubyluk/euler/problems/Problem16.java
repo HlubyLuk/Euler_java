@@ -14,7 +14,7 @@ import java.math.BigInteger;
  */
 public class Problem16 extends Problem {
     @Override
-    public void solve() {
+    public Number solve() {
         BigInteger two = BigInteger.valueOf(2L);
         BigInteger pow = two.pow(1000);
         String powAsTxt = pow.toString();
@@ -26,6 +26,6 @@ public class Problem16 extends Problem {
             ret += Integer.valueOf(valueOf);
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

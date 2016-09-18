@@ -57,7 +57,7 @@ public class Problem18 extends Problem {
                     "04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
 
     @Override
-    public void solve() {
+    public Number solve() {
         int[][] triangle = parseTriangle();
 
         for (int i = triangle.length - 1; i > 0; i--) {
@@ -66,7 +66,7 @@ public class Problem18 extends Problem {
             }
         }
 
-        System.out.println(triangle[0][0]);
+        return triangle[0][0];
     }
 
     private int[][] parseTriangle() {

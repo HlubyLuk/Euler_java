@@ -66,7 +66,7 @@ public class Problem11 extends Problem {
     private static final int SUB_MATRIX = 4;
     private int[][] parsedMatrix = new int[MATRIX_ROW][MATRIX_COLUMN];
 
-    public void solve() {
+    public Number solve() {
         String[] split = MATRIX.split("\n");
 
         for (int i = 0; i < split.length; i++) {
@@ -91,6 +91,6 @@ public class Problem11 extends Problem {
             }
         }
 
-        System.out.println(products.last());
+        return products.last().getMaxProduct();
     }
 }

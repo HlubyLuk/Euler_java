@@ -30,7 +30,7 @@ public class Problem23 extends Problem {
     private static final int STOP = 28123;
 
     @Override
-    public void solve() {
+    public Number solve() {
         BigInteger ret = BigInteger.ZERO;
         boolean[] abundants_bool = new boolean[STOP];
         Set<Integer> abundant_sums = new TreeSet<>();
@@ -51,7 +51,7 @@ public class Problem23 extends Problem {
             }
         }
 
-        System.out.println(ret);
+        return ret;
     }
 
     private Set<Integer> abundant_sum(int num, boolean[] bools) {

@@ -15,7 +15,7 @@ import java.util.TreeSet;
 public class Problem3 extends Problem {
 
     @Override
-    public void solve() {
+    public Number solve() {
         long number = 600851475143L;
         TreeSet<Integer> integers = new TreeSet<>();
         for (int i = 0; number != 1; i++) {
@@ -26,6 +26,6 @@ public class Problem3 extends Problem {
             }
         }
 
-        System.out.println(integers.last());
+        return integers.last();
     }
 }

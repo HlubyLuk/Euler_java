@@ -13,7 +13,7 @@ import java.util.TreeSet;
  * Created by HlubyLuk on 24.07.16.
  */
 public class Problem7 extends Problem {
-    public void solve() {
+    public Number solve() {
         TreeSet<Integer> ret = new TreeSet<>();
 
         for (int i = 0; ret.size() < 10001; i++) {
@@ -22,6 +22,6 @@ public class Problem7 extends Problem {
             }
         }
 
-        System.out.println(ret.last());
+        return ret.last();
     }
 }

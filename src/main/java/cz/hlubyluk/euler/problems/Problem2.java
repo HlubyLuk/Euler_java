@@ -17,7 +17,7 @@ public class Problem2 extends Problem {
     private static final int LIMIT = 4000000;
 
     @Override
-    public void solve() {
+    public Number solve() {
         int ret = 0;
         int a = 0;
         int b = 1;
@@ -30,6 +30,6 @@ public class Problem2 extends Problem {
             }
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

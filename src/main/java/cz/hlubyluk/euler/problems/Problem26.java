@@ -33,7 +33,7 @@ public class Problem26 extends Problem {
     private static final int PRECISION = 1000;
 
     @Override
-    public void solve() {
+    public Number solve() {
         RecurringSolver biggest = new RecurringSolver(Integer.MIN_VALUE, Integer.MIN_VALUE);
 
         for (int i = START; i < STOP; i++) {
@@ -48,6 +48,6 @@ public class Problem26 extends Problem {
             }
         }
 
-        System.out.println(biggest);
+        return biggest.getDenominator();
     }
 }

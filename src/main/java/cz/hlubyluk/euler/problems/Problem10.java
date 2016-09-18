@@ -11,7 +11,7 @@ package cz.hlubyluk.euler.problems;
  * Created by HlubyLuk on 24.07.16.
  */
 public class Problem10 extends Problem {
-    public void solve() {
+    public Number solve() {
         long sum = 0;
         for (int i = 2; i < 2000000; i++) {
             if (proofByContradiction(i)) {
@@ -19,7 +19,6 @@ public class Problem10 extends Problem {
             }
         }
 
-        String format = String.format("Sum %d", sum);
-        System.out.println(format);
+        return sum;
     }
 }

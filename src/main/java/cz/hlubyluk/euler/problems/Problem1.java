@@ -16,7 +16,7 @@ public class Problem1 extends Problem {
     private static final int LIMIT = 1000;
 
     @Override
-    public void solve() {
+    public Number solve() {
         int ret = 0;
         for (int i = 0; i < LIMIT; i++) {
             if (i % 3 == 0 || i % 5 == 0) {
@@ -24,6 +24,6 @@ public class Problem1 extends Problem {
             }
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

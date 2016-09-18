@@ -16,10 +16,7 @@ public class Problem15 extends Problem {
     private static final int GRID_EDGE = 20;
 
     @Override
-    public void solve() {
-        long ret = binomialCoefficient(GRID_EDGE + GRID_EDGE, GRID_EDGE);
-
-        String format = String.format("Count of routs is %d", ret);
-        System.out.println(format);
+    public Number solve() {
+        return binomialCoefficient(GRID_EDGE + GRID_EDGE, GRID_EDGE);
     }
 }

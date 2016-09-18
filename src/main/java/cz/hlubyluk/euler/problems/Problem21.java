@@ -20,7 +20,7 @@ public class Problem21 extends Problem {
     private static final int STOP = 10000;
 
     @Override
-    public void solve() {
+    public Number solve() {
         int ret = 0;
 
         for (int i = 1; i < STOP; i++) {
@@ -29,7 +29,7 @@ public class Problem21 extends Problem {
             }
         }
 
-        System.out.println(ret);
+        return ret;
     }
 
 }

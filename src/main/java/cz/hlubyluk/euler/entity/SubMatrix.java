@@ -132,7 +132,7 @@ public class SubMatrix implements Comparable<SubMatrix> {
      *
      * @return max sum.
      */
-    private int getMaxProduct() {
+    public int getMaxProduct() {
         int ret = Integer.MIN_VALUE;
 
         for (int i = 0; i < products.length; i++) {

@@ -1,5 +1,7 @@
 package cz.hlubyluk.euler.problems;
 
+import java.math.BigInteger;
+
 /**
  * Lexicographic permutations
  * Problem 24
@@ -25,7 +27,7 @@ public class Problem24 extends Problem {
 //    private static final int STOP = 24;
 
     @Override
-    public void solve() {
+    public Number solve() {
         int j = 1;
         while (j < STOP && nextLexicographicPermutations(SEQUENCE)) {
             j++;
@@ -35,6 +37,6 @@ public class Problem24 extends Problem {
             tmp.append(i);
         }
 
-        System.out.println(tmp.toString());
+        return new BigInteger(tmp.toString());
     }
 }

@@ -10,12 +10,12 @@ import java.util.TreeSet;
  * Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem {
-    static final String NOT_IMPLEMENTED = "Not implemented!";
+    static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
     /**
      * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])} method.
      */
-    public abstract void solve();
+    public abstract Number solve();
 
     /**
      * Proof by contradiction.

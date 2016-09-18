@@ -26,7 +26,7 @@ import java.util.Arrays;
 public class Problem22 extends Problem {
 
     @Override
-    public void solve() {
+    public Number solve() {
         BigInteger ret = BigInteger.ZERO;
 
         String[] names = getNames();
@@ -43,12 +43,12 @@ public class Problem22 extends Problem {
                 charactersScore += characterNumber;
             }
 
-            int nameSchore = (i + 1) * charactersScore;
-            BigInteger val = new BigInteger(String.valueOf(nameSchore));
+            int nameScore = (i + 1) * charactersScore;
+            BigInteger val = new BigInteger(String.valueOf(nameScore));
             ret = ret.add(val);
         }
 
-        System.out.println(ret);
+        return ret;
     }
 
     /**

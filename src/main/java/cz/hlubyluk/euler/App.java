@@ -10,35 +10,39 @@ import org.joda.time.Period;
  * Problems runner.
  */
 public class App {
+
+    private static final String TIME = "minutes %d, seconds %d, millis %d";
+    private static final String RESULT = "result %s, iterval %s";
+
     public static void main(String[] args) {
         Instant start = Instant.now();
 
-        new Problem1().solve();
-        new Problem2().solve();
-        new Problem3().solve();
-        new Problem4().solve();
-        new Problem5().solve();
-        new Problem6().solve();
-        new Problem7().solve();
-        new Problem8().solve();
-        new Problem9().solve();
-        new Problem10().solve();
-        new Problem11().solve();
-        new Problem12().solve();
-        new Problem13().solve();
-        new Problem14().solve();
-        new Problem15().solve();
-        new Problem16().solve();
-        new Problem17().solve();
-        new Problem18().solve();
-        new Problem19().solve();
-        new Problem20().solve();
-        new Problem21().solve();
-        new Problem22().solve();
-        new Problem23().solve();
-        new Problem24().solve();
-        new Problem25().solve();
-        new Problem26().solve();
+        System.out.println(new Problem1().solve());
+        System.out.println(new Problem2().solve());
+        System.out.println(new Problem3().solve());
+        System.out.println(new Problem4().solve());
+        System.out.println(new Problem5().solve());
+        System.out.println(new Problem6().solve());
+        System.out.println(new Problem7().solve());
+        System.out.println(new Problem8().solve());
+        System.out.println(new Problem9().solve());
+        System.out.println(new Problem10().solve());
+        System.out.println(new Problem11().solve());
+        System.out.println(new Problem12().solve());
+        System.out.println(new Problem13().solve());
+        System.out.println(new Problem14().solve());
+        System.out.println(new Problem15().solve());
+        System.out.println(new Problem16().solve());
+        System.out.println(new Problem17().solve());
+        System.out.println(new Problem18().solve());
+        System.out.println(new Problem19().solve());
+        System.out.println(new Problem20().solve());
+        System.out.println(new Problem21().solve());
+        System.out.println(new Problem22().solve());
+        System.out.println(new Problem23().solve());
+        System.out.println(new Problem24().solve());
+        System.out.println(new Problem25().solve());
+        System.out.println(new Problem26().solve());
 
         Instant finish = Instant.now();
 
@@ -49,8 +53,8 @@ public class App {
         int seconds = period.getSeconds();
         int millis = period.getMillis();
 
-        String time = String.format("minutes %d, seconds %d, millis %d", minutes, seconds, millis);
-        String format = String.format("result %s, iterval %s", time, interval.toString());
+        String time = String.format(TIME, minutes, seconds, millis);
+        String format = String.format(RESULT, time, interval.toString());
         System.out.println(format);
     }
 }

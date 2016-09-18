@@ -19,7 +19,7 @@ package cz.hlubyluk.euler.problems;
  * Created by HlubyLuk on 24.07.16.
  */
 public class Problem6 extends Problem {
-    public void solve() {
+    public Number solve() {
         int a = 0;
         for (int i = 1; i <= 100; i++) {
             a += Math.pow(i, 2);
@@ -31,8 +31,6 @@ public class Problem6 extends Problem {
         }
         b = (int) Math.pow(b, 2);
 
-        int ret = b - a;
-
-        System.out.println(ret);
+        return b - a;
     }
 }

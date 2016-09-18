@@ -55,7 +55,7 @@ public class Problem8 extends Problem {
             "71636269561882670428252483600823257530420752963450";
 
     @Override
-    public void solve() {
+    public Number solve() {
         String clearNumber = NUMBER_TXT.replaceAll("[\\n, ]", "");
         long length = clearNumber.length(), ret = 0;
 
@@ -72,6 +72,6 @@ public class Problem8 extends Problem {
             }
         }
 
-        System.out.println(ret);
+        return ret;
     }
 }

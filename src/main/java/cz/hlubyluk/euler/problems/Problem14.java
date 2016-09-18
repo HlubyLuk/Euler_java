@@ -25,7 +25,7 @@ import cz.hlubyluk.euler.solvers.CollatzSequenceSolver;
  */
 public class Problem14 extends Problem {
     @Override
-    public void solve() {
+    public Number solve() {
         CollatzSequenceSolver biggest = null;
 
         for (int i = 1000000; i > 0; i--) {
@@ -38,6 +38,6 @@ public class Problem14 extends Problem {
             }
         }
 
-        System.out.println(biggest);
+        return biggest.getStart();
     }
 }

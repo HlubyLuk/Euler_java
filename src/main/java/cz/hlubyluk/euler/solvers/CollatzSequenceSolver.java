@@ -64,7 +64,11 @@ public class CollatzSequenceSolver {
      * @return sequence length.
      */
     public int getCount() {
-        return count;
+        return count == 0 ? Integer.MIN_VALUE : count;
+    }
+
+    public int getStart() {
+        return start;
     }
 
     @Override

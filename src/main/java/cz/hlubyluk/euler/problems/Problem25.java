@@ -37,7 +37,7 @@ public class Problem25 extends Problem {
 //    private static final int STOP = 3;
 
     @Override
-    public void solve() {
+    public Number solve() {
         BigInteger f1 = BigInteger.ONE, f2 = BigInteger.ONE, f3 = BigInteger.ZERO;
         int i = 2;
 
@@ -50,6 +50,6 @@ public class Problem25 extends Problem {
             i++;
         }
 
-        System.out.println(i);
+        return i;
     }
 }

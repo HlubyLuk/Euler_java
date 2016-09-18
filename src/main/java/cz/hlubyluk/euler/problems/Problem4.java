@@ -19,7 +19,7 @@ public class Problem4 extends Problem {
     private static final int FROM = 1000;
     private static final int TO = 10;
 
-    public void solve() {
+    public Number solve() {
         TreeSet<Integer> ret = new TreeSet<>();
 
         for (int i = FROM; i > TO; i--) {
@@ -34,6 +34,6 @@ public class Problem4 extends Problem {
             }
         }
 
-        System.out.println(ret.last());
+        return ret.last();
     }
 }
