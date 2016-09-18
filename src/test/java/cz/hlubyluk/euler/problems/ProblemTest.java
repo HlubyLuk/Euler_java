@@ -116,6 +116,13 @@ public class ProblemTest {
         Assert.assertArrayEquals(expected, sequence);
     }
 
+    @Test
+    public void digitPowSum() {
+        int powSum = problem.digitPowSum(1634, 4);
+
+        Assert.assertEquals(1634, powSum);
+    }
+
     @After
     public void after() {
         this.problem = null;

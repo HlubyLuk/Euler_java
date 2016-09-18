@@ -1,6 +1,7 @@
 package cz.hlubyluk.euler.problems;
 
 import java.math.BigDecimal;
+import java.text.StringCharacterIterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -10,6 +11,7 @@ import java.util.TreeSet;
  * Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem {
+    static final char ZERO_CHAR = '0';
     static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
     /**
@@ -254,5 +256,24 @@ public abstract class Problem {
         }
 
         return true;
+    }
+
+    /**
+     * Iteration trow number and digits powered and sum together.
+     *
+     * @param number   to sum.
+     * @param exponent second number of call {@link Math#pow(double, double)}.
+     * @return sum of powered digits.
+     */
+    int digitPowSum(int number, int exponent) {
+        String value = String.valueOf(number);
+        StringCharacterIterator iterator = new StringCharacterIterator(value);
+        int tmp = 0;
+
+        for (char i = iterator.first(); i != StringCharacterIterator.DONE; i = iterator.next()) {
+            tmp += Math.pow(i - ZERO_CHAR, exponent);
+        }
+
+        return tmp;
     }
 }
