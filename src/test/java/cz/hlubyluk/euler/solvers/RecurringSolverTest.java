@@ -29,14 +29,14 @@ public class RecurringSolverTest {
     public void getRest() throws Exception {
         String rest = solver.getRest();
 
-        Assert.assertEquals("(3)", rest);
+        Assert.assertEquals("3", rest);
     }
 
     @Test
     public void getFullNumber() throws Exception {
         String fullNumber = solver.getFullNumber();
 
-        Assert.assertEquals("0.(3)", fullNumber);
+        Assert.assertEquals("0.3", fullNumber);
     }
 
     @Test

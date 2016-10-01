@@ -38,7 +38,7 @@ public class Problem26 extends Problem {
 
         for (int i = START; i < STOP; i++) {
             RecurringSolver solver = new RecurringSolver(1, i);
-            solver.setDecimalLength(PRECISION);
+            solver.setPrecision(PRECISION);
             solver.solveRecurring();
 
             int length = solver.getLengthOfRest();

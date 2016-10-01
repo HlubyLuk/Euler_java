@@ -7,48 +7,31 @@ import java.util.Vector;
  */
 public class RecurringSolver {
     private final StringBuilder builder = new StringBuilder();
-    private final Vector<Integer> stack = new Vector<>();
+    private final Vector<Integer> rests = new Vector<>();
     private final int numerator;
     private final int denominator;
-    private int decimalLength;
+    private int precision;
     private String number;
 
     public RecurringSolver(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
-        this.decimalLength = 32;
+        this.precision = 32;
     }
 
     public void solveRecurring() {
         this.number = String.valueOf(this.numerator / this.denominator);
-        int x = this.numerator % this.denominator;
-
-        for (int i = 0; i < this.decimalLength && !stack.contains(x); i++) {
-            stack.add(x);
-
-            int tmp = 1;
-            while (x > 0 && x * Math.pow(10, tmp) <= this.denominator) {
-                tmp += 1;
-                builder.append('0');
-            }
-
-            x = (int) (x * Math.pow(10, tmp));
-
-            builder.append(x / this.denominator);
-
-            x = x % this.denominator;
-        }
-
-        if (x != 0) {
-            int indexOf = stack.indexOf(x);
-            builder.insert(indexOf, '(').append(')');
-        } else {
-            builder.deleteCharAt(builder.length() - 1);
+        int rest = this.numerator % this.denominator;
+        for (int i = 0; i < this.precision && rest > 0 && !rests.contains(rest); i++) {
+            this.rests.add(rest);
+            rest *= 10;
+            builder.append(rest / this.denominator);
+            rest %= this.denominator;
         }
     }
 
-    public void setDecimalLength(int decimalLength) {
-        this.decimalLength = decimalLength;
+    public void setPrecision(int precision) {
+        this.precision = precision;
     }
 
     public String getRest() {
