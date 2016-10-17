@@ -1,5 +1,7 @@
 package cz.hlubyluk.euler.problems;
 
+import cz.hlubyluk.euler.utils.Constants;
+
 import java.math.BigDecimal;
 import java.text.StringCharacterIterator;
 import java.util.Set;
@@ -11,7 +13,6 @@ import java.util.TreeSet;
  * Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem {
-    static final char ZERO_CHAR = '0';
     static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
     /**
@@ -271,7 +272,7 @@ public abstract class Problem {
         int tmp = 0;
 
         for (char i = iterator.first(); i != StringCharacterIterator.DONE; i = iterator.next()) {
-            tmp += Math.pow(i - ZERO_CHAR, exponent);
+            tmp += Math.pow(i - Constants.ZERO_CHAR, exponent);
         }
 
         return tmp;
