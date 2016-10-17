@@ -1,7 +1,5 @@
 package cz.hlubyluk.euler.problems;
 
-import java.util.Arrays;
-
 /**
  * Number spiral diagonals
  * Problem 28
@@ -22,13 +20,13 @@ import java.util.Arrays;
  */
 public class Problem28 extends Problem {
 
-//    private static final int EDGE = 5;
+    //private static final int EDGE = 5;
     private static final int EDGE = 1001;
     private static final int[] MATRIX = new int[EDGE * EDGE];
 
     @Override
     public Number solve() {
-        int shift = 2, counter = 0,tmp = 0;
+        int shift = 2, counter = 0, tmp = 0;
 
         for (int i = 0; i < MATRIX.length; i++) {
             MATRIX[i] = i + 1;

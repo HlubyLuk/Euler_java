@@ -31,7 +31,7 @@ public class Problem29 extends Problem {
         TreeSet<Double> tmp = new TreeSet<>();
 
         for (int a = START; a <= STOP; a++) {
-            for (int b = START; b <= STOP; b ++) {
+            for (int b = START; b <= STOP; b++) {
                 tmp.add(Math.pow(a, b));
             }
         }

@@ -14,20 +14,21 @@ import java.util.Locale;
  * Created by HlubyLuk on 17/10/2016.
  */
 public class PandigitalSolver {
-    private int a;
-    private int b;
+    private int multiplicand;
+    private int multiplier;
     private int product;
     private boolean zeroLess;
 
     /**
      * Constructor.
      *
-     * @param a multiplicand.
-     * @param b multiplier.
+     * @param multiplicand number.
+     * @param multiplier   number.
      */
-    public PandigitalSolver(int a, int b) {
-        this.a = a;
-        this.b = b;
+    public PandigitalSolver(int multiplicand, int multiplier) {
+        this.multiplicand = multiplicand;
+        this.multiplier = multiplier;
+        this.product = this.multiplicand * this.multiplier;
     }
 
     /**
@@ -40,28 +41,24 @@ public class PandigitalSolver {
     }
 
     /**
-     * Contains numbers from 1 to 9 and theirs multiplicand, multiplier and product together has only 9 digits.
+     * Contains numbers from 0(1) to 9 and theirs multiplicand, multiplier and product together has only 10(9) digits.
      *
      * @param zeroLess contains zero.
      * @return {@link Boolean#TRUE} contains all, otherwise {@link Boolean#FALSE}.
      */
     public boolean isPandigital(boolean zeroLess) {
         this.zeroLess = zeroLess;
-        this.product = this.a * this.b;
 
-        return checkNumbers(this.a, this.b, product);
+        return checkNumbers();
     }
 
     /**
      * Check multiplicand, multiplier and product contains all digits from 1 to 9 and has only 9 digits.
      *
-     * @param a multiplicand.
-     * @param b multiplier.
-     * @param p product.
      * @return {@link Boolean#TRUE} contains all digits and has only 9 digits, otherswise {@link Boolean#FALSE}.
      */
-    private boolean checkNumbers(int a, int b, int p) {
-        String numbers = String.format(Locale.getDefault(), "%d%d%d", a, b, p);
+    private boolean checkNumbers() {
+        String numbers = String.format(Locale.getDefault(), "%d%d%d", multiplicand, multiplier, this.product);
         boolean[] checkArray = {this.zeroLess, false, false, false, false, false, false, false, false, false};
         boolean tmp = true;
         int checkLength = this.zeroLess ? 9 : 10;

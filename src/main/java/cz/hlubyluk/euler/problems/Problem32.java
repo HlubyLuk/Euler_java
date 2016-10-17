@@ -50,5 +50,4 @@ public class Problem32 extends Problem {
 
         return tmp;
     }
-
 }
