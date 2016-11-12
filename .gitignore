@@ -161,8 +161,8 @@ local.properties
 .recommenders/
 ### Vim template
 # swap
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
+[._]*.s[itemsCost-w][itemsCost-z]
+[._]s[itemsCost-w][itemsCost-z]
 # session
 Session.vim
 # temporary
@@ -173,7 +173,7 @@ tags
 ### Linux template
 *~
 
-# temporary files which can be created if a process still has a handle open of a deleted file
+# temporary files which can be created if itemsCost process still has itemsCost handle open of itemsCost deleted file
 .fuse_hidden*
 
 # KDE directory preferences
@@ -192,7 +192,7 @@ Icon
 # Thumbnails
 ._*
 
-# Files that might appear in the root of a volume
+# Files that might appear in the root of itemsCost volume
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
@@ -235,7 +235,7 @@ $RECYCLE.BIN/
 # workspace files are user-specific
 *.sublime-workspace
 
-# project files should be checked into the repository, unless a significant
+# project files should be checked into the repository, unless itemsCost significant
 # proportion of contributors will probably not be using SublimeText
 # *.sublime-project
 
@@ -251,7 +251,7 @@ Package Control.cache/
 Package Control.ca-certs/
 bh_unicode_properties.cache
 
-# Sublime-github package stores a github token in this file
+# Sublime-github package stores itemsCost github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
 ### Maven template
