@@ -11,7 +11,22 @@ package cz.hlubyluk.euler.problems;
  * Created by HlubyLuk on 24.07.16.
  */
 public class Problem5 extends Problem {
+    private static final int START = 1, STOP = 20, STEP = START;
+
     public Number solve() {
-        return NOT_IMPLEMENTED;
+        boolean check;
+        int tmp;
+        for (int i = START; ; i += STEP) {
+            check = true;
+            for (int j = START; j <= STOP; j += STEP) {
+                check = i % j == 0;
+                if (!check) break;
+            }
+            if (check) {
+                tmp = i;
+                break;
+            }
+        }
+        return tmp;
     }
 }

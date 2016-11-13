@@ -9,6 +9,6 @@ import org.junit.Test;
 public class Problem5Test {
     @Test
     public void solve() throws Exception {
-        Assert.assertEquals(Problem.NOT_IMPLEMENTED.longValue(), new Problem5().solve());
+        Assert.assertEquals(232792560, new Problem5().solve());
     }
 }
