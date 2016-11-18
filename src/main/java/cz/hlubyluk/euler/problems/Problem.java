@@ -4,8 +4,7 @@ import cz.hlubyluk.euler.utils.Constants;
 
 import java.math.BigDecimal;
 import java.text.StringCharacterIterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Helper class for easier common implementation.
@@ -275,6 +274,36 @@ public abstract class Problem {
             tmp += Math.pow(i - Constants.ZERO_CHAR, exponent);
         }
 
+        return tmp;
+    }
+
+    /**
+     * Check number is prime number.
+     * @param number to resolve.
+     * @return {@link Boolean#TRUE} is prime number, otherwise {@link Boolean#FALSE}.
+     */
+    boolean isPrime(int number) {
+        return proofByContradiction(number);
+    }
+
+    /**
+     * Decomposition of number into prime dividers.
+     * @param number to resolve.
+     * @return {@link ArrayList} of {@link Integer} primes dividers.
+     */
+    List<Integer> primeNumbers(int number) {
+        List<Integer> tmp = new ArrayList<>();
+        boolean[] primeBooleans = sieveOfEratosthenes(number);
+        ArrayList<Integer> primes = new ArrayList<>();
+        for (int i = 0; i < primeBooleans.length; i += 1) if (!primeBooleans[i]) primes.add(i);
+        for (int i = primes.size() - 1; i >= 0; ) {
+            Integer prime = primes.get(i);
+            if (number % prime == 0) {
+                tmp.add(prime);
+                number /= prime;
+            } else i -= 1;
+        }
+        Collections.sort(tmp);
         return tmp;
     }
 }

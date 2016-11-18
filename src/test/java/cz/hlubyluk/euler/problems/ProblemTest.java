@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -121,6 +122,19 @@ public class ProblemTest {
         int powSum = problem.digitPowSum(1634, 4);
 
         Assert.assertEquals(1634, powSum);
+    }
+
+    @Test
+    public void primeNumbers() {
+        Integer[] expected = new Integer[] {2, 2, 5};
+        List<Integer> tmp = problem.primeNumbers(20);
+        Assert.assertArrayEquals(expected, tmp.toArray(new Integer[tmp.size()]));
+    }
+
+    @Test
+    public void isPrime() {
+        Assert.assertTrue(problem.isPrime(3));
+        Assert.assertFalse(problem.isPrime(4));
     }
 
     @After
