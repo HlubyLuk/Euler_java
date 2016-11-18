@@ -12,7 +12,7 @@ import org.joda.time.Period;
 public class App {
 
     private static final String TIME = "minutes %d, seconds %d, millis %d";
-    private static final String RESULT = "result %s, iterval %s";
+    private static final String RESULT = "result %s, interval %s";
 
     public static void main(String[] args) {
         Instant start = Instant.now();
