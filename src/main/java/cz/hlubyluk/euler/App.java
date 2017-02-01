@@ -50,6 +50,7 @@ public class App {
         System.out.println(new Problem31().solve());
         System.out.println(new Problem32().solve());
         System.out.println(new Problem33().solve());
+        System.out.println(new Problem34().solve());
 
         Instant finish = Instant.now();
 
