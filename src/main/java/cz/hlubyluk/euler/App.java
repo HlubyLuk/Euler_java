@@ -52,6 +52,7 @@ public class App {
         new Problem32().solve();
         new Problem33().solve();
         new Problem34().solve();
+        new Problem35().solve();
         Instant finish = Instant.now();
         Duration between = Duration.between(start, finish);
         String time = String.format(SECONDS, between.getSeconds(), TimeUnit.NANOSECONDS.toMillis(between.getNano()));
