@@ -1,7 +1,7 @@
 package cz.hlubyluk.euler.problems;
 
-import org.joda.time.DateTimeConstants;
-import org.joda.time.LocalDate;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 /**
  * Counting Sundays
@@ -25,18 +25,15 @@ import org.joda.time.LocalDate;
 public class Problem19 extends Problem {
     @Override
     public Number solve() {
-        LocalDate start = new LocalDate(1901, 1, 1);
-        LocalDate stop = new LocalDate(2000, 12, 31);
+        LocalDate start = LocalDate.of(1901, 1, 1);
+        LocalDate stop = LocalDate.of(2000, 12, 31);
         int ret = 0;
-
         while (start.isBefore(stop)) {
-            if (start.getDayOfWeek() == DateTimeConstants.SUNDAY) {
+            if (start.getDayOfWeek() == DayOfWeek.SUNDAY) {
                 ret++;
             }
-
             start = start.plusMonths(1);
         }
-
         return ret;
     }
 }
