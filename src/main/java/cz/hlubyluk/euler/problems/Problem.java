@@ -12,10 +12,12 @@ import java.util.*;
  * Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem {
+
     static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
     /**
-     * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])} method.
+     * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])}
+     * method.
      */
     public abstract Number solve();
 
@@ -23,7 +25,8 @@ public abstract class Problem {
      * Proof by contradiction.
      *
      * @param number to resolve.
-     * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible with other number.
+     * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible with other
+     * number.
      */
     boolean proofByContradiction(int number) {
         if (number == 2) {
@@ -47,8 +50,8 @@ public abstract class Problem {
      * Factorization of number.
      *
      * @param number for factorization.
-     * @return booleans array where {@link Boolean#FALSE} is prime number
-     * {@link Boolean#TRUE} is divisible with prime number
+     * @return booleans array where {@link Boolean#FALSE} is prime number {@link Boolean#TRUE} is
+     * divisible with prime number
      */
     boolean[] sieveOfEratosthenes(int number) {
         boolean[] sieves = new boolean[number + 1];
@@ -121,7 +124,8 @@ public abstract class Problem {
     /**
      * This sequence is generated from a pattern of dots which form a triangle.
      * <p>
-     * By adding another row of dots and counting all the dots we can find the next number of the sequence.
+     * By adding another row of dots and counting all the dots we can find the next number of the
+     * sequence.
      *
      * @param number edge of triangle.
      * @return count of dots in triangle.
@@ -178,8 +182,8 @@ public abstract class Problem {
     }
 
     /**
-     * Amicable numbers are two different numbers so related
-     * that the sum of the proper divisors of each is equal to the other number.
+     * Amicable numbers are two different numbers so related that the sum of the proper divisors of
+     * each is equal to the other number.
      *
      * @param n number.
      * @return {@link Boolean#TRUE} number is amicable, otherwise {@link Boolean#FALSE}.
@@ -209,15 +213,14 @@ public abstract class Problem {
     }
 
     /**
-     * In number theory, an abundant number or excessive number
-     * is a number for which the sum of its proper divisors is greater than the number itself.
-     * The integer 12 is the first abundant number.
-     * Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16.
-     * The amount by which the sum exceeds the number is the abundance.
-     * The number 12 has an abundance of 4, for example.
+     * In number theory, an abundant number or excessive number is a number for which the sum of its
+     * proper divisors is greater than the number itself. The integer 12 is the first abundant
+     * number. Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. The amount by which the
+     * sum exceeds the number is the abundance. The number 12 has an abundance of 4, for example.
      *
      * @param number to resolve.
-     * @return {@link Boolean#TRUE} abundant number, otherwise {@link Boolean#FALSE} non abundant number.
+     * @return {@link Boolean#TRUE} abundant number, otherwise {@link Boolean#FALSE} non abundant
+     * number.
      */
     boolean isAbundant(int number) {
         return number < sumDividers(number);
@@ -227,7 +230,8 @@ public abstract class Problem {
      * Transform input array into next lexicographic permutation.
      *
      * @param sequence input for modification.
-     * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise {@link Boolean#FALSE}.
+     * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise
+     * {@link Boolean#FALSE}.
      */
     boolean nextLexicographicPermutations(int[] sequence) {
         int i = sequence.length - 2;
@@ -261,7 +265,7 @@ public abstract class Problem {
     /**
      * Iteration trow number and digits powered and sum together.
      *
-     * @param number   to sum.
+     * @param number to sum.
      * @param exponent second number of call {@link Math#pow(double, double)}.
      * @return sum of powered digits.
      */
@@ -279,6 +283,7 @@ public abstract class Problem {
 
     /**
      * Check number is prime number.
+     *
      * @param number to resolve.
      * @return {@link Boolean#TRUE} is prime number, otherwise {@link Boolean#FALSE}.
      */
@@ -288,6 +293,7 @@ public abstract class Problem {
 
     /**
      * Decomposition of number into prime dividers.
+     *
      * @param number to resolve.
      * @return {@link ArrayList} of {@link Integer} primes dividers.
      */
@@ -295,15 +301,62 @@ public abstract class Problem {
         List<Integer> tmp = new ArrayList<>();
         boolean[] primeBooleans = sieveOfEratosthenes(number);
         ArrayList<Integer> primes = new ArrayList<>();
-        for (int i = 0; i < primeBooleans.length; i += 1) if (!primeBooleans[i]) primes.add(i);
-        for (int i = primes.size() - 1; i >= 0; ) {
+        for (int i = 0; i < primeBooleans.length; i += 1) {
+            if (!primeBooleans[i]) {
+                primes.add(i);
+            }
+        }
+        for (int i = primes.size() - 1; i >= 0;) {
             Integer prime = primes.get(i);
             if (number % prime == 0) {
                 tmp.add(prime);
                 number /= prime;
-            } else i -= 1;
+            } else {
+                i -= 1;
+            }
         }
         Collections.sort(tmp);
         return tmp;
+    }
+
+    /**
+     * Check input is same from start to end and end to start.
+     *
+     * @param in number to check.
+     * @return {@link Boolean#TRUE} is palindromic, otherwise {@link Boolean#FALSE}.
+     */
+    protected boolean isPalindromic(Number in) {
+        return this.isPalindromic(String.valueOf(in));
+    }
+
+    /**
+     * Check input is same from start to end and end to start.
+     *
+     * @param in string input to check.
+     * @return {@link Boolean#TRUE} is palindromic, otherwise {@link Boolean#FALSE}.
+     */
+    protected boolean isPalindromic(String in) {
+        String rev = new StringBuilder(in).reverse().toString();
+        return in.equals(rev);
+    }
+
+    /**
+     * Convert <code>int<code/> into binary string.
+     *
+     * @param in to convert.
+     * @return binary string.
+     */
+    protected String toBinary(int in) {
+        return Integer.toBinaryString(in);
+    }
+
+    /**
+     * Get sum form list of integers.
+     *
+     * @param in collection to sum.
+     * @return sum of collection.
+     */
+    protected int sum(List<Integer> in) {
+        return in.stream().reduce((a, b) -> a + b).get();
     }
 }
