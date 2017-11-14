@@ -1,6 +1,7 @@
 package cz.hlubyluk.euler.problems;
 
 import cz.hlubyluk.euler.utils.Constants;
+import cz.hlubyluk.euler.utils.Shared;
 
 import java.math.BigDecimal;
 import java.text.StringCharacterIterator;
@@ -11,7 +12,7 @@ import java.util.*;
  * <p>
  * Created by HlubyLuk on 24.07.16.
  */
-public abstract class Problem {
+public abstract class Problem extends Shared {
 
     static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
@@ -20,31 +21,6 @@ public abstract class Problem {
      * method.
      */
     public abstract Number solve();
-
-    /**
-     * Proof by contradiction.
-     *
-     * @param number to resolve.
-     * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible with other
-     * number.
-     */
-    boolean proofByContradiction(int number) {
-        if (number == 2) {
-            return true;
-        }
-
-        if (number < 2 || number % 2 == 0) {
-            return false;
-        }
-
-        for (int i = 3; i * i <= number; i += 2) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     /**
      * Factorization of number.
@@ -279,16 +255,6 @@ public abstract class Problem {
         }
 
         return tmp;
-    }
-
-    /**
-     * Check number is prime number.
-     *
-     * @param number to resolve.
-     * @return {@link Boolean#TRUE} is prime number, otherwise {@link Boolean#FALSE}.
-     */
-    boolean isPrime(int number) {
-        return proofByContradiction(number);
     }
 
     /**

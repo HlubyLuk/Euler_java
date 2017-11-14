@@ -22,13 +22,6 @@ public class ProblemTest {
     }
 
     @Test
-    public void proofByContradiction() throws Exception {
-        boolean b = problem.proofByContradiction(21);
-
-        Assert.assertFalse(b);
-    }
-
-    @Test
     public void sieveOfEratosthenes() throws Exception {
         boolean[] sieves = problem.sieveOfEratosthenes(2);
         boolean[] booles = {true, true, false};

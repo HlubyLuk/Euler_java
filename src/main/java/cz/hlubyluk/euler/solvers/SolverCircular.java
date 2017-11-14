@@ -37,7 +37,7 @@ public class SolverCircular extends SolverBase<Long> {
         int length = str.length();
         for (int i = 0; i < length; i += 1) {
             String tmp = str.substring(i, length) + str.substring(0, i);
-            if (!isPrime(Integer.valueOf(tmp)))
+            if (!prime(Integer.valueOf(tmp)))
                 return false;
         }
         return true;
@@ -50,7 +50,7 @@ public class SolverCircular extends SolverBase<Long> {
      * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible
      * with other number.
      */
-    private boolean isPrime(int number) {
+    private boolean prime(int number) {
         return IntStream.range(3, (int) Math.sqrt(number)).noneMatch(x -> number % x == 0);
     }
 }
