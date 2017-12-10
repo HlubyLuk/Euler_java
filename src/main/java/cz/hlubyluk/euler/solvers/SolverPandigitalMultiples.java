@@ -5,9 +5,7 @@
  */
 package cz.hlubyluk.euler.solvers;
 
-import cz.hlubyluk.euler.solvers.SolverPandigitalMultiples.ResultPandigitalMultiples;
-import java.util.List;
-import java.util.logging.Logger;
+import cz.hlubyluk.euler.solvers.SolverPandigitalMultiples.SPMEntity;
 
 /**
  * Pandigital multiples Problem 38 Take the number 192 and multiply it by each of 1, 2, and 3:
@@ -20,41 +18,52 @@ import java.util.logging.Logger;
  * <p/>
  * @author HlubyLuk
  */
-public class SolverPandigitalMultiples extends SolverBase<ResultPandigitalMultiples> {
+public class SolverPandigitalMultiples extends SolverBase<SPMEntity> {
 
-    private final int num;
-    private final boolean digits[] = new boolean[9];
+    private static final String OK = "123456789";
+    private final int start;
 
-    public SolverPandigitalMultiples(int num) {
-        this.num = num;
+    public SolverPandigitalMultiples(int start) {
+        this.start = start;
     }
 
     @Override
-    public ResultPandigitalMultiples solve() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public SPMEntity solve() {
+        SPMEntity tmp = new SPMEntity();
+        StringBuilder builder = new StringBuilder();
+//        for (char item : OK.toCharArray()) {
+        for (int i = 1; i < 10 && this.check(builder.toString()); i += 1) {
+            builder.append(this.start * i);
+            if (this.isPandigital(builder.toString())) {
+                tmp = new SPMEntity(Long.valueOf(builder.toString()), i == 1);
+                break;
+            }
+        }
+        return tmp;
     }
 
-    public static final class ResultPandigitalMultiples {
+    public static final class SPMEntity {
 
-        public final boolean pandigital;
-        public final int countMultiples, number;
+        public final boolean pandigital, out;
+        public final long number;
 
-        ResultPandigitalMultiples(boolean pandigital, int countMultiples, List<Integer> products) {
-            StringBuilder tmp = new StringBuilder();
-            for (int item : products) {
-                tmp.append(item);
-            }
-            this.pandigital = pandigital;
-            this.countMultiples = countMultiples;
-            this.number = Integer.valueOf(tmp.toString());
+        private SPMEntity() {
+            this.pandigital = false;
+            this.out = false;
+            this.number = Integer.MIN_VALUE;
+        }
+
+        private SPMEntity(long number, boolean out) {
+            this.pandigital = true;
+            this.out = out;
+            this.number = number;
         }
 
         @Override
         public int hashCode() {
             int hash = 5;
-            hash = 23 * hash + (this.pandigital ? 1 : 0);
-            hash = 23 * hash + this.countMultiples;
-            hash = 23 * hash + this.number;
+            hash = 67 * hash + (this.pandigital ? 1 : 0);
+            hash = 67 * hash + (int) (this.number ^ (this.number >>> 32));
             return hash;
         }
 
@@ -69,11 +78,8 @@ public class SolverPandigitalMultiples extends SolverBase<ResultPandigitalMultip
             if (getClass() != obj.getClass()) {
                 return false;
             }
-            final ResultPandigitalMultiples other = (ResultPandigitalMultiples) obj;
+            final SPMEntity other = (SPMEntity) obj;
             if (this.pandigital != other.pandigital) {
-                return false;
-            }
-            if (this.countMultiples != other.countMultiples) {
                 return false;
             }
             if (this.number != other.number) {
@@ -81,11 +87,12 @@ public class SolverPandigitalMultiples extends SolverBase<ResultPandigitalMultip
             }
             return true;
         }
+        
+        
 
         @Override
         public String toString() {
-            return "ResultPandigitalMultiples{" + "pandigital=" + pandigital + ", countMultiples=" +
-                    countMultiples + ", number=" + number + '}';
+            return "SPMEntity{" + "pandigital=" + pandigital + ", number=" + number + '}';
         }
     }
 }

@@ -31,10 +31,16 @@ public class Problem38 extends Problem {
 
     @Override
     public Number solve() {
-        System.out.println(new SolverPandigitalMultiples(192).solve());
-        System.out.println(new SolverPandigitalMultiples(9).solve());
-        return Integer.MIN_VALUE;
+        long tmp = Long.MIN_VALUE;
+        for (int i = 1; i < Integer.MAX_VALUE; i += 1) {
+            SolverPandigitalMultiples.SPMEntity solve = new SolverPandigitalMultiples(i).solve();
+            if (solve.out) {
+                break;
+            }
+            if (solve.pandigital && tmp < solve.number) {
+                tmp = solve.number;
+            }
+        }
+        return tmp;
     }
-
-
 }

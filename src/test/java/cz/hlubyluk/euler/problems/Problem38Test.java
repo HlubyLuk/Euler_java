@@ -15,6 +15,6 @@ import org.junit.Test;
 public class Problem38Test {
     @Test
     public void run() throws Exception {
-        Assert.assertEquals(932718654L, new Problem38().solve());
+        Assert.assertEquals("932718654", String.valueOf(new Problem38().solve()));
     }
 }
