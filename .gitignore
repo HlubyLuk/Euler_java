@@ -265,3 +265,4 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+/nbproject/

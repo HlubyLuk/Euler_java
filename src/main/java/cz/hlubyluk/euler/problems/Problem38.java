@@ -32,7 +32,7 @@ public class Problem38 extends Problem {
     @Override
     public Number solve() {
         long tmp = Long.MIN_VALUE;
-        for (int i = 1; i < Integer.MAX_VALUE; i += 1) {
+        for (int i = 0; i < 10000; i += 1) {
             SolverPandigitalMultiples.SPMEntity solve = new SolverPandigitalMultiples(i).solve();
             if (solve.out) {
                 break;
