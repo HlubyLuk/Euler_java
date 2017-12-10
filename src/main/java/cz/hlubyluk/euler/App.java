@@ -55,6 +55,7 @@ public class App {
         System.out.println(new Problem35().solve());
         System.out.println(new Problem36().solve());
         System.out.println(new Problem37().solve());
+        System.out.println(new Problem38().solve());
         Instant finish = Instant.now();
         Duration between = Duration.between(start, finish);
         String time = String.format(SECONDS, between.getSeconds(), TimeUnit.NANOSECONDS.toMillis(
