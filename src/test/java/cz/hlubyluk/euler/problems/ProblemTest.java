@@ -135,7 +135,7 @@ public class ProblemTest {
         this.problem = null;
     }
 
-    private class ProblemDummyHolder extends Problem{
+    private class ProblemDummyHolder extends Problem {
         @Override
         public Number solve() {
             return null;
