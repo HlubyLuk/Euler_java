@@ -209,34 +209,55 @@ public abstract class Problem extends Shared {
      * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise
      * {@link Boolean#FALSE}.
      */
-    boolean nextLexicographicPermutations(int[] sequence) {
-        int i = sequence.length - 2;
-        while (i > 0 && sequence[i] >= sequence[i + 1]) {
-            i--;
-        }
-
-        int j = sequence.length - 1;
-        while (j > 0 && sequence[j] <= sequence[i]) {
-            j--;
-        }
-
-        int tmp = sequence[i];
-        sequence[i] = sequence[j];
-        sequence[j] = tmp;
-
-        int x = i + 1, y = sequence.length - 1;
-        int[] clone = sequence.clone();
-        while (x < y) {
-            tmp = clone[x];
-            sequence[x] = clone[y];
-            sequence[y] = tmp;
-
-            x++;
-            y--;
-        }
-
-        return true;
-    }
+	protected boolean nextLexicographicPermutations(int[] arr) {
+		int i = arr.length - 1;
+		for (; i > 0 && arr[i - 1] >= arr[i]; i--) {}
+		if (i <= 0) {
+			return false;
+		}
+		{
+			int j = arr.length - 1;
+			for (; arr[j] <= arr[i - 1]; j--)
+				;
+			int temp = arr[i - 1];
+			arr[i - 1] = arr[j];
+			arr[j] = temp;
+		}
+		for (int j = arr.length - 1; i < j; i++, j--) {
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		return true;
+	}
+//    boolean nextLexicographicPermutations(int[] sequence) {
+//        int i = sequence.length - 2;
+//        while (i > 0 && sequence[i] >= sequence[i + 1]) {
+//            i--;
+//        }
+//
+//        int j = sequence.length - 1;
+//        while (j > 0 && sequence[j] <= sequence[i]) {
+//            j--;
+//        }
+//
+//        int tmp = sequence[i];
+//        sequence[i] = sequence[j];
+//        sequence[j] = tmp;
+//
+//        int x = i + 1, y = sequence.length - 1;
+//        int[] clone = sequence.clone();
+//        while (x < y) {
+//            tmp = clone[x];
+//            sequence[x] = clone[y];
+//            sequence[y] = tmp;
+//
+//            x++;
+//            y--;
+//        }
+//
+//        return true;
+//    }
 
     /**
      * Iteration trow number and digits powered and sum together.
