@@ -36,11 +36,6 @@ public class Problem45 extends Problem {
 		return number * (number + 1) / 2;
 	}
 
-	private boolean isTriangle(long y) {
-		double x = (Math.sqrt(8 * y + 1) - 1) / 2;
-		return x - (int) x == 0;
-	}
-
 	/**
 	 * https://en.wikipedia.org/wiki/Pentagonal_number
 	 * 
