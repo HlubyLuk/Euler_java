@@ -5,23 +5,21 @@
  */
 package cz.hlubyluk.euler.solvers;
 
-import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Assert;
 import org.junit.Test;
 
-/**
- *
- * @author HlubyLuk
- */
+/** @author HlubyLuk */
 public class SolverTruncatableTest {
-    
-    @Test
-    public void ok() {
-        assertTrue(new SolverTruncatable(3797).solve());
-    }
-    
+
     @Test
     public void ko() {
         Assert.assertFalse(new SolverTruncatable(1111).solve());
+    }
+
+    @Test
+    public void ok() {
+        assertTrue(new SolverTruncatable(3797).solve());
     }
 }

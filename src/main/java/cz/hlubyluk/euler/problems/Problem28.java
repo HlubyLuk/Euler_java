@@ -1,26 +1,23 @@
 package cz.hlubyluk.euler.problems;
 
 /**
- * Number spiral diagonals
- * Problem 28
- * <p>
- * Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:
- * <p>
- * 21 22 23 24 25
- * 20  7  8  9 10
- * 19  6  1  2 11
- * 18  5  4  3 12
- * 17 16 15 14 13
- * <p>
- * It can be verified that the sum of the numbers on the diagonals is 101.
- * <p>
- * What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
- * <p>
- * Created by HlubyLuk on 18.09.16.
+ * Number spiral diagonals Problem 28
+ *
+ * <p>Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is
+ * formed as follows:
+ *
+ * <p>21 22 23 24 25 20 7 8 9 10 19 6 1 2 11 18 5 4 3 12 17 16 15 14 13
+ *
+ * <p>It can be verified that the sum of the numbers on the diagonals is 101.
+ *
+ * <p>What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same
+ * way?
+ *
+ * <p>Created by HlubyLuk on 18.09.16.
  */
 public class Problem28 extends Problem {
 
-    //private static final int EDGE = 5;
+    // private static final int EDGE = 5;
     private static final int EDGE = 1001;
     private static final int[] MATRIX = new int[EDGE * EDGE];
 
@@ -43,9 +40,10 @@ public class Problem28 extends Problem {
 
                 tmp += MATRIX[i];
 
-//                DEBUG
-//                String format = String.format("MATRIX[i]=%,9d, tmp=%,9d", MATRIX[i], tmp);
-//                System.out.println(format);
+                //                DEBUG
+                //                String format = String.format("MATRIX[i]=%,9d, tmp=%,9d",
+                // MATRIX[i], tmp);
+                //                System.out.println(format);
             }
         }
 

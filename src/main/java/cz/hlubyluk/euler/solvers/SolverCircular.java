@@ -3,10 +3,10 @@ package cz.hlubyluk.euler.solvers;
 import java.util.stream.IntStream;
 
 /**
- * The number, 197, is called a circular prime because all rotations of the digits: 197, 971,
- * and 719, are themselves prime.
- * <p/>
- * Created by HlubyLuk on 06/02/2017.
+ * The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and
+ * 719, are themselves prime.
+ *
+ * <p>Created by HlubyLuk on 06/02/2017.
  */
 public class SolverCircular extends SolverBase<Long> {
     private final int start;
@@ -21,11 +21,6 @@ public class SolverCircular extends SolverBase<Long> {
         this.stop = stop;
     }
 
-    @Override
-    public Long solve() {
-        return IntStream.range(this.start, this.stop).filter(this::isAllCircularPrime).count();
-    }
-
     /**
      * Check all circular of number are prime number.
      *
@@ -37,8 +32,7 @@ public class SolverCircular extends SolverBase<Long> {
         int length = str.length();
         for (int i = 0; i < length; i += 1) {
             String tmp = str.substring(i, length) + str.substring(0, i);
-            if (!prime(Integer.valueOf(tmp)))
-                return false;
+            if (!prime(Integer.valueOf(tmp))) return false;
         }
         return true;
     }
@@ -47,10 +41,15 @@ public class SolverCircular extends SolverBase<Long> {
      * Proof by contradiction.
      *
      * @param number to resolve.
-     * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible
-     * with other number.
+     * @return {@link Boolean#TRUE} is prime number, {@link Boolean#FALSE} divisible with other
+     *     number.
      */
     private boolean prime(int number) {
         return IntStream.range(3, (int) Math.sqrt(number)).noneMatch(x -> number % x == 0);
+    }
+
+    @Override
+    public Long solve() {
+        return IntStream.range(this.start, this.stop).filter(this::isAllCircularPrime).count();
     }
 }

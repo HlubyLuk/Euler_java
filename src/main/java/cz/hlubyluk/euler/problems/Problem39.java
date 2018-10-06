@@ -8,11 +8,13 @@ package cz.hlubyluk.euler.problems;
 /**
  * If p is the perimeter of a right angle triangle with integral length sides, {a,b,c}, there are
  * exactly three solutions for p = 120.
- * <p/>
- * {20,48,52}, {24,45,51}, {30,40,50}
- * <p/>
- * For which value of p ≤ 1000, is the number of solutions maximised?
- * <p/>
+ *
+ * <p>{20,48,52}, {24,45,51}, {30,40,50}
+ *
+ * <p>For which value of p ≤ 1000, is the number of solutions maximised?
+ *
+ * <p>
+ *
  * @author HlubyLuk
  */
 public class Problem39 extends Problem {
@@ -33,9 +35,9 @@ public class Problem39 extends Problem {
                     }
                 }
             }
-//            if (count > 0) {
-//                System.out.println(String.format("p=%d, count=%d", p, count));
-//            }
+            //            if (count > 0) {
+            //                System.out.println(String.format("p=%d, count=%d", p, count));
+            //            }
             if (tmp < count) {
                 tmp = count;
                 triangle = p;
@@ -44,5 +46,4 @@ public class Problem39 extends Problem {
 
         return triangle;
     }
-
 }

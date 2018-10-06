@@ -2,64 +2,88 @@ package cz.hlubyluk.euler.problems;
 
 import cz.hlubyluk.euler.utils.Constants;
 import cz.hlubyluk.euler.utils.Shared;
-
 import java.math.BigDecimal;
+import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Helper class for easier common implementation.
- * <p>
- * Created by HlubyLuk on 24.07.16.
+ *
+ * <p>Created by HlubyLuk on 24.07.16.
  */
 public abstract class Problem extends Shared {
 
-    static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
+    protected static final Number NOT_IMPLEMENTED = Long.MIN_VALUE;
 
     /**
-     * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])}
-     * method.
-     */
-    public abstract Number solve();
-
-    /**
-     * Factorization of number.
+     * Compute count k-value subset from n-value set.
      *
-     * @param number for factorization.
-     * @return booleans array where {@link Boolean#FALSE} is prime number {@link Boolean#TRUE} is
-     * divisible with prime number
+     * @param n number.
+     * @param k number.
+     * @return count of combination.
      */
-    boolean[] sieveOfEratosthenes(int number) {
-        boolean[] sieves = new boolean[number + 1];
-        sieves[0] = sieves[1] = true;
-
-        for (int i = 2; i * i <= number; i++) {
-            if (sieves[i]) {
-                continue;
-            }
-
-            for (int j = 2 * i; j <= number; j += i) {
-                sieves[j] = true;
-            }
-        }
-
-        return sieves;
+    protected long binomialCoefficient(int n, int k) {
+        return factorial(n)
+                .divide(factorial(n - k).multiply(factorial(k)), BigDecimal.ROUND_HALF_UP)
+                .longValue();
     }
 
     /**
-     * Use {@link #sieveOfEratosthenes(int)} and filter only prime numbers.
+     * Compute dividers count.
      *
-     * @param number for prime number factorization.
-     * @return collection of prime dividers.
+     * @param number for factorization.
+     * @return count dividers.
      */
-    Set<Integer> primeDividers(int number) {
-        Set<Integer> ret = new TreeSet<Integer>();
+    protected int countOfDividers(long number) {
+        int ret = 0;
 
-        boolean[] sieves = sieveOfEratosthenes(number);
-        for (int i = 0; i < sieves.length; i++) {
-            if (!sieves[i]) {
-                ret.add(i);
+        for (int i = 1; i * i <= number; i++) {
+            if (number % i == 0) {
+                ret++;
             }
+        }
+
+        return ret * 2;
+    }
+
+    /**
+     * Iteration trow number and digits powered and sum together.
+     *
+     * @param number to sum.
+     * @param exponent second number of call {@link Math#pow(double, double)}.
+     * @return sum of powered digits.
+     */
+    protected int digitPowSum(int number, int exponent) {
+        String value = String.valueOf(number);
+        StringCharacterIterator iterator = new StringCharacterIterator(value);
+        int tmp = 0;
+
+        for (char i = iterator.first(); i != CharacterIterator.DONE; i = iterator.next()) {
+            tmp += Math.pow(i - Constants.ZERO_CHAR, exponent);
+        }
+
+        return tmp;
+    }
+
+    /**
+     * Mathematics, the factorial of a non-negative integer n, denoted by n!
+     *
+     * @param number n.
+     * @return product of all positive numbers, than bigger or equal to number.
+     */
+    protected BigDecimal factorial(int number) {
+        BigDecimal ret;
+
+        if (number <= 1) {
+            ret = BigDecimal.ONE;
+        } else {
+            ret = new BigDecimal(number).multiply(factorial(number - 1));
         }
 
         return ret;
@@ -72,7 +96,7 @@ public abstract class Problem extends Shared {
      * @param b number 2.
      * @return greatest common divisor of the given numbers.
      */
-    int gcd(int a, int b) {
+    protected int gcd(int a, int b) {
         if (a < 1 || b < 1) {
             throw new IllegalArgumentException("a or b is less than 1!!!");
         }
@@ -87,74 +111,17 @@ public abstract class Problem extends Shared {
     }
 
     /**
-     * Least common multiple.
+     * In number theory, an abundant number or excessive number is a number for which the sum of its
+     * proper divisors is greater than the number itself. The integer 12 is the first abundant
+     * number. Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. The amount by which the
+     * sum exceeds the number is the abundance. The number 12 has an abundance of 4, for example.
      *
-     * @param a number.
-     * @param b number.
-     * @return least common multiple of given numbers.
+     * @param number to resolve.
+     * @return {@link Boolean#TRUE} abundant number, otherwise {@link Boolean#FALSE} non abundant
+     *     number.
      */
-    int lcm(int a, int b) {
-        return (a * b) / gcd(a, b);
-    }
-
-    /**
-     * This sequence is generated from a pattern of dots which form a triangle.
-     * <p>
-     * By adding another row of dots and counting all the dots we can find the next number of the
-     * sequence.
-     *
-     * @param number edge of triangle.
-     * @return count of dots in triangle.
-     */
-    long triangleNumber(int number) {
-        return number * (number + 1) / 2;
-    }
-
-    /**
-     * Compute dividers count.
-     *
-     * @param number for factorization.
-     * @return count dividers.
-     */
-    int countOfDividers(long number) {
-        int ret = 0;
-
-        for (int i = 1; i * i <= number; i++) {
-            if (number % i == 0) {
-                ret++;
-            }
-        }
-
-        return ret * 2;
-    }
-
-    /**
-     * Compute count k-value subset from n-value set.
-     *
-     * @param n number.
-     * @param k number.
-     * @return count of combination.
-     */
-    long binomialCoefficient(int n, int k) {
-        return factorial(n).divide(factorial(n - k).multiply(factorial(k)), BigDecimal.ROUND_HALF_UP).longValue();
-    }
-
-    /**
-     * Mathematics, the factorial of a non-negative integer n, denoted by n!
-     *
-     * @param number n.
-     * @return product of all positive numbers, than bigger or equal to number.
-     */
-    BigDecimal factorial(int number) {
-        BigDecimal ret;
-
-        if (number <= 1) {
-            ret = BigDecimal.ONE;
-        } else {
-            ret = new BigDecimal(number).multiply(factorial(number - 1));
-        }
-
-        return ret;
+    protected boolean isAbundant(int number) {
+        return number < sumDividers(number);
     }
 
     /**
@@ -164,146 +131,10 @@ public abstract class Problem extends Shared {
      * @param n number.
      * @return {@link Boolean#TRUE} number is amicable, otherwise {@link Boolean#FALSE}.
      */
-    boolean isAmicable(int n) {
+    protected boolean isAmicable(int n) {
         int m = sumDividers(n);
 
         return m != n && sumDividers(m) == n;
-    }
-
-    /**
-     * Compute sum of dividers.
-     *
-     * @param n number to fraction.
-     * @return sum of dividers.
-     */
-    int sumDividers(int n) {
-        int ret = 0;
-
-        for (int i = 1; i < n; i++) {
-            if (n % i == 0) {
-                ret += i;
-            }
-        }
-
-        return ret;
-    }
-
-    /**
-     * In number theory, an abundant number or excessive number is a number for which the sum of its
-     * proper divisors is greater than the number itself. The integer 12 is the first abundant
-     * number. Its proper divisors are 1, 2, 3, 4 and 6 for a total of 16. The amount by which the
-     * sum exceeds the number is the abundance. The number 12 has an abundance of 4, for example.
-     *
-     * @param number to resolve.
-     * @return {@link Boolean#TRUE} abundant number, otherwise {@link Boolean#FALSE} non abundant
-     * number.
-     */
-    boolean isAbundant(int number) {
-        return number < sumDividers(number);
-    }
-
-    /**
-     * Transform input array into next lexicographic permutation.
-     *
-     * @param sequence input for modification.
-     * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise
-     * {@link Boolean#FALSE}.
-     */
-	protected boolean nextLexicographicPermutations(int[] arr) {
-		int i = arr.length - 1;
-		for (; i > 0 && arr[i - 1] >= arr[i]; i--) {}
-		if (i <= 0) {
-			return false;
-		}
-		{
-			int j = arr.length - 1;
-			for (; arr[j] <= arr[i - 1]; j--)
-				;
-			int temp = arr[i - 1];
-			arr[i - 1] = arr[j];
-			arr[j] = temp;
-		}
-		for (int j = arr.length - 1; i < j; i++, j--) {
-			int temp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = temp;
-		}
-		return true;
-	}
-//    boolean nextLexicographicPermutations(int[] sequence) {
-//        int i = sequence.length - 2;
-//        while (i > 0 && sequence[i] >= sequence[i + 1]) {
-//            i--;
-//        }
-//
-//        int j = sequence.length - 1;
-//        while (j > 0 && sequence[j] <= sequence[i]) {
-//            j--;
-//        }
-//
-//        int tmp = sequence[i];
-//        sequence[i] = sequence[j];
-//        sequence[j] = tmp;
-//
-//        int x = i + 1, y = sequence.length - 1;
-//        int[] clone = sequence.clone();
-//        while (x < y) {
-//            tmp = clone[x];
-//            sequence[x] = clone[y];
-//            sequence[y] = tmp;
-//
-//            x++;
-//            y--;
-//        }
-//
-//        return true;
-//    }
-
-    /**
-     * Iteration trow number and digits powered and sum together.
-     *
-     * @param number to sum.
-     * @param exponent second number of call {@link Math#pow(double, double)}.
-     * @return sum of powered digits.
-     */
-    int digitPowSum(int number, int exponent) {
-        String value = String.valueOf(number);
-        StringCharacterIterator iterator = new StringCharacterIterator(value);
-        int tmp = 0;
-
-        for (char i = iterator.first(); i != StringCharacterIterator.DONE; i = iterator.next()) {
-            tmp += Math.pow(i - Constants.ZERO_CHAR, exponent);
-        }
-
-        return tmp;
-    }
-
-    /**
-     * Decomposition of number into prime dividers.
-     *
-     * @param number to resolve.
-     * @return {@link ArrayList} of {@link Integer} primes dividers.
-     */
-    List<Integer> primeNumbers(int number) {
-        List<Integer> tmp = new ArrayList<>();
-        boolean[] primeBooleans = sieveOfEratosthenes(number);
-        ArrayList<Integer> primes = new ArrayList<>();
-        for (int i = 0; i < primeBooleans.length; i += 1) {
-            if (!primeBooleans[i]) {
-                primes.add(i);
-            }
-        }
-        for (int i = primes.size() - 1; i >= 0;) {
-            Integer prime = primes.get(i);
-            if (number % prime == 0) {
-                tmp.add(prime);
-                number /= prime;
-            } else {
-                i -= 1;
-            }
-        }
-        Collections.sort(tmp);
-        return tmp;
     }
 
     /**
@@ -328,14 +159,135 @@ public abstract class Problem extends Shared {
     }
 
     /**
-     * Convert <code>int<code/> into binary string.
+     * Least common multiple.
      *
-     * @param in to convert.
-     * @return binary string.
+     * @param a number.
+     * @param b number.
+     * @return least common multiple of given numbers.
      */
-    protected String toBinary(int in) {
-        return Integer.toBinaryString(in);
+    protected int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
     }
+
+    /**
+     * Transform input array into next lexicographic permutation.
+     *
+     * @param sequence input for modification.
+     * @return {@link Boolean#TRUE} when sequence has next permutation, otherwise {@link
+     *     Boolean#FALSE}.
+     */
+    protected boolean nextLexicographicPermutations(int[] arr) {
+        int i = arr.length - 1;
+        for (; i > 0 && arr[i - 1] >= arr[i]; i--) {}
+        if (i <= 0) {
+            return false;
+        }
+        {
+            int j = arr.length - 1;
+            for (; arr[j] <= arr[i - 1]; j--) ;
+            int temp = arr[i - 1];
+            arr[i - 1] = arr[j];
+            arr[j] = temp;
+        }
+        for (int j = arr.length - 1; i < j; i++, j--) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return true;
+    }
+
+    /**
+     * Use {@link #sieveOfEratosthenes(int)} and filter only prime numbers.
+     *
+     * @param number for prime number factorization.
+     * @return collection of prime dividers.
+     */
+    protected Set<Integer> primeDividers(int number) {
+        Set<Integer> ret = new TreeSet<Integer>();
+
+        boolean[] sieves = sieveOfEratosthenes(number);
+        for (int i = 0; i < sieves.length; i++) {
+            if (!sieves[i]) {
+                ret.add(i);
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * Decomposition of number into prime dividers.
+     *
+     * @param number to resolve.
+     * @return {@link ArrayList} of {@link Integer} primes dividers.
+     */
+    protected List<Integer> primeNumbers(int number) {
+        List<Integer> tmp = new ArrayList<>();
+        boolean[] primeBooleans = sieveOfEratosthenes(number);
+        ArrayList<Integer> primes = new ArrayList<>();
+        for (int i = 0; i < primeBooleans.length; i += 1) {
+            if (!primeBooleans[i]) {
+                primes.add(i);
+            }
+        }
+        for (int i = primes.size() - 1; i >= 0; ) {
+            Integer prime = primes.get(i);
+            if (number % prime == 0) {
+                tmp.add(prime);
+                number /= prime;
+            } else {
+                i -= 1;
+            }
+        }
+        Collections.sort(tmp);
+        return tmp;
+    }
+
+    /**
+     * Has input same digits.
+     *
+     * @param a first input.
+     * @param b second input.
+     * @return {@link Boolean#TRUE} are same, otherwise {@link Boolean#FALSE}.
+     */
+    protected boolean sameDigit(int a, int b) {
+        char[] arrA = String.valueOf(a).toCharArray();
+        char[] arrB = String.valueOf(b).toCharArray();
+        Arrays.sort(arrA);
+        Arrays.sort(arrB);
+        return Arrays.equals(arrA, arrB);
+    }
+
+    /**
+     * Factorization of number.
+     *
+     * @param number for factorization.
+     * @return booleans array where {@link Boolean#FALSE} is prime number {@link Boolean#TRUE} is
+     *     divisible with prime number
+     */
+    protected boolean[] sieveOfEratosthenes(int number) {
+        boolean[] sieves = new boolean[number + 1];
+        sieves[0] = sieves[1] = true;
+
+        for (int i = 2; i * i <= number; i++) {
+            if (sieves[i]) {
+                continue;
+            }
+
+            for (int j = 2 * i; j <= number; j += i) {
+                sieves[j] = true;
+            }
+        }
+
+        return sieves;
+    }
+
+    /**
+     * Common method for problems. Easier call from {@link cz.hlubyluk.euler.App#main(String[])}
+     * method.
+     */
+    public abstract Number solve();
 
     /**
      * Get sum form list of integers.
@@ -347,18 +299,44 @@ public abstract class Problem extends Shared {
         return in.stream().reduce((a, b) -> a + b).get();
     }
 
-	/**
-	 * Has input same digits.
-	 *
-	 * @param a first input.
-	 * @param b second input.
-	 * @return {@link Boolean#TRUE} are same, otherwise {@link Boolean#FALSE}.
-	 */
-	protected boolean sameDigit(int a, int b) {
-		char[] arrA = String.valueOf(a).toCharArray();
-		char[] arrB = String.valueOf(b).toCharArray();
-		Arrays.sort(arrA);
-		Arrays.sort(arrB);
-		return Arrays.equals(arrA, arrB);
-	}
+    /**
+     * Compute sum of dividers.
+     *
+     * @param n number to fraction.
+     * @return sum of dividers.
+     */
+    protected int sumDividers(int n) {
+        int ret = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (n % i == 0) {
+                ret += i;
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * Convert <code>int<code/> into binary string.
+     *
+     * @param in to convert.
+     * @return binary string.
+     */
+    protected String toBinary(int in) {
+        return Integer.toBinaryString(in);
+    }
+
+    /**
+     * This sequence is generated from a pattern of dots which form a triangle.
+     *
+     * <p>By adding another row of dots and counting all the dots we can find the next number of the
+     * sequence.
+     *
+     * @param number edge of triangle.
+     * @return count of dots in triangle.
+     */
+    protected long triangleNumber(int number) {
+        return number * (number + 1) / 2;
+    }
 }

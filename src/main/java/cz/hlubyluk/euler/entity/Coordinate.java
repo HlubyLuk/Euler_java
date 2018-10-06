@@ -1,8 +1,6 @@
 package cz.hlubyluk.euler.entity;
 
-/**
- * Southeast conner of {@link SubMatrix}.
- */
+/** Southeast conner of {@link SubMatrix}. */
 public class Coordinate {
     private final int x;
     private final int y;
@@ -38,9 +36,6 @@ public class Coordinate {
 
     @Override
     public String toString() {
-        return "Coordinate{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "Coordinate{" + "x=" + x + ", y=" + y + '}';
     }
 }

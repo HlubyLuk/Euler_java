@@ -3,15 +3,14 @@ package cz.hlubyluk.euler.problems;
 import java.util.TreeSet;
 
 /**
- * Largest palindrome product
- * Problem 4
- * <p>
- * A palindromic number reads the same both ways.
- * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
- * <p>
- * Find the largest palindrome made from the product of two 3-digit numbers.
- * <p>
- * Created by HlubyLuk on 24.07.16.
+ * Largest palindrome product Problem 4
+ *
+ * <p>A palindromic number reads the same both ways. The largest palindrome made from the product of
+ * two 2-digit numbers is 9009 = 91 × 99.
+ *
+ * <p>Find the largest palindrome made from the product of two 3-digit numbers.
+ *
+ * <p>Created by HlubyLuk on 24.07.16.
  */
 public class Problem4 extends Problem {
 
@@ -19,6 +18,7 @@ public class Problem4 extends Problem {
     private static final int FROM = 1000;
     private static final int TO = 10;
 
+    @Override
     public Number solve() {
         TreeSet<Integer> ret = new TreeSet<>();
 

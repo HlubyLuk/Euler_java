@@ -10,32 +10,21 @@ import java.util.TreeSet;
 /**
  * Pandigital prime Problem 41
  *
- * We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n
+ * <p>We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n
  * exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
  *
- * What is the largest n-digit pandigital prime that exists?
+ * <p>What is the largest n-digit pandigital prime that exists?
  *
  * @author HlubyLuk
  */
 public class Problem41 extends Problem {
 
-    @Override
-    public Number solve() {
-        TreeSet<Integer> tmp = new TreeSet<>();
-        int[] x = {};
-        for (int i = 1; i < 10; i += 1) {
-            x = new int[i];
-            for (int j = 1; j <= i; j += 1) {
-                x[j - 1] = j;
-            }
-            while (this.nextPermutation(x)) {
-                final int mapToInt = this.mapToInt(x);
-                if (this.isPrime(mapToInt)) {
-                    tmp.add(mapToInt);
-                }
-            }
+    private int mapToInt(int[] x) {
+        StringBuilder tmp = new StringBuilder();
+        for (int item : x) {
+            tmp.append(item);
         }
-        return tmp.last();
+        return Integer.valueOf(tmp.toString());
     }
 
     boolean nextPermutation(int[] array) {
@@ -79,12 +68,22 @@ public class Problem41 extends Problem {
         return true;
     }
 
-    private int mapToInt(int[] x) {
-        StringBuilder tmp = new StringBuilder();
-        for (int item : x) {
-            tmp.append(item);
+    @Override
+    public Number solve() {
+        TreeSet<Integer> tmp = new TreeSet<>();
+        int[] x = {};
+        for (int i = 1; i < 10; i += 1) {
+            x = new int[i];
+            for (int j = 1; j <= i; j += 1) {
+                x[j - 1] = j;
+            }
+            while (this.nextPermutation(x)) {
+                final int mapToInt = this.mapToInt(x);
+                if (this.isPrime(mapToInt)) {
+                    tmp.add(mapToInt);
+                }
+            }
         }
-        return Integer.valueOf(tmp.toString());
+        return tmp.last();
     }
-
 }

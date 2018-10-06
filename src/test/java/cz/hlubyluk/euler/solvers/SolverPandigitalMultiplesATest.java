@@ -5,10 +5,7 @@
  */
 package cz.hlubyluk.euler.solvers;
 
-/**
- *
- * @author HlubyLuk
- */
+/** @author HlubyLuk */
 public class SolverPandigitalMultiplesATest extends SolverPandigitalMultiplesTest {
 
     @Override
@@ -17,12 +14,12 @@ public class SolverPandigitalMultiplesATest extends SolverPandigitalMultiplesTes
     }
 
     @Override
-    public boolean isPandigital() {
-        return true;
+    public boolean isOut() {
+        return false;
     }
 
     @Override
-    public boolean isOut() {
-        return false;
+    public boolean isPandigital() {
+        return true;
     }
 }

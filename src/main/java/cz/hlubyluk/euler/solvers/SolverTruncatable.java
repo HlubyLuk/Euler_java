@@ -5,10 +5,7 @@
  */
 package cz.hlubyluk.euler.solvers;
 
-/**
- *
- * @author HlubyLuk
- */
+/** @author HlubyLuk */
 public class SolverTruncatable extends SolverBase<Boolean> {
 
     private final int num;

@@ -2,10 +2,7 @@ package cz.hlubyluk.euler.entity;
 
 import java.util.HashMap;
 
-/**
- * Show key and his count.
- * Created by HlubyLuk on 18/11/2016.
- */
+/** Show key and his count. Created by HlubyLuk on 18/11/2016. */
 public class MapCounting extends HashMap<Integer, Integer> {
     private static final int DEFAULT = 0;
     private static final int START = DEFAULT;
@@ -13,6 +10,7 @@ public class MapCounting extends HashMap<Integer, Integer> {
 
     /**
      * Constructor.
+     *
      * @param capacity of counter.
      */
     public MapCounting(int capacity) {
@@ -21,6 +19,7 @@ public class MapCounting extends HashMap<Integer, Integer> {
 
     /**
      * Increment count of key.
+     *
      * @param key to increment.
      */
     public void add(int key) {

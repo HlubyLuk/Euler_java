@@ -5,16 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Created by HlubyLuk on 18/10/2016.
- */
+/** Created by HlubyLuk on 18/10/2016. */
 public class PandigitalSolverTest {
     private PandigitalSolver solver;
-
-    @Before
-    public void setUp() {
-        this.solver = new PandigitalSolver(39, 186);
-    }
 
     @Test
     public void getProduct() throws Exception {
@@ -24,6 +17,11 @@ public class PandigitalSolverTest {
     @Test
     public void isPandigital() throws Exception {
         Assert.assertTrue(this.solver.isPandigital(true));
+    }
+
+    @Before
+    public void setUp() {
+        this.solver = new PandigitalSolver(39, 186);
     }
 
     @After

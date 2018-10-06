@@ -10,29 +10,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- *
- * @author HlubyLuk
- */
+/** @author HlubyLuk */
 public abstract class SolverPandigitalMultiplesTest {
 
     public SolverPandigitalMultiples.SPMEntity solve;
 
     public abstract int getNumber();
 
-    public abstract boolean isPandigital();
-
     public abstract boolean isOut();
 
-//    protected abstract long getNum();
-    @Before
-    public void setUp() {
-        this.solve = new SolverPandigitalMultiples(this.getNumber()).solve();
-    }
+    public abstract boolean isPandigital();
 
-    @After
-    public void setDown() {
-        this.solve = null;
+    @Test
+    public void out() {
+        System.out.println(this.isOut());
+        Assert.assertEquals(this.isOut(), this.solve.out);
     }
 
     @Test
@@ -41,9 +33,14 @@ public abstract class SolverPandigitalMultiplesTest {
         Assert.assertEquals(this.isPandigital(), this.solve.pandigital);
     }
 
-    @Test
-    public void out() {
-        System.out.println(this.isOut());
-        Assert.assertEquals(this.isOut(), this.solve.out);
+    @After
+    public void setDown() {
+        this.solve = null;
+    }
+
+    // protected abstract long getNum();
+    @Before
+    public void setUp() {
+        this.solve = new SolverPandigitalMultiples(this.getNumber()).solve();
     }
 }

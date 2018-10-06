@@ -8,10 +8,7 @@ package cz.hlubyluk.euler.problems;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- *
- * @author HlubyLuk
- */
+/** @author HlubyLuk */
 public class Problem38Test {
     @Test
     public void run() throws Exception {

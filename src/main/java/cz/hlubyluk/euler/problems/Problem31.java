@@ -3,21 +3,20 @@ package cz.hlubyluk.euler.problems;
 import cz.hlubyluk.euler.solvers.SolverKnapsack;
 
 /**
+ * In England the currency is made up of pound, £, and pence, p, and there are eight coins in
+ * general circulation:
  *
+ * <p>1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).
  *
- * In England the currency is made up of pound, £, and pence, p, and there are eight coins in general circulation:
+ * <p>It is possible to make £2 in the following way:
  *
- * 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).
+ * <p>1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
  *
- * It is possible to make £2 in the following way:
+ * <p>How many different ways can £2 be made using any number of coins?
  *
- * 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
- *
- * How many different ways can £2 be made using any number of coins?
- *
- * Created by HlubyLuk on 12/11/2016.
+ * <p>Created by HlubyLuk on 12/11/2016.
  */
-public class Problem31 extends Problem{
+public class Problem31 extends Problem {
     @Override
     public Number solve() {
         int target = 200;
