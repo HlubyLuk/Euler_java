@@ -346,4 +346,19 @@ public abstract class Problem extends Shared {
     protected int sum(List<Integer> in) {
         return in.stream().reduce((a, b) -> a + b).get();
     }
+
+	/**
+	 * Has input same digits.
+	 *
+	 * @param a first input.
+	 * @param b second input.
+	 * @return {@link Boolean#TRUE} are same, otherwise {@link Boolean#FALSE}.
+	 */
+	protected boolean sameDigit(int a, int b) {
+		char[] arrA = String.valueOf(a).toCharArray();
+		char[] arrB = String.valueOf(b).toCharArray();
+		Arrays.sort(arrA);
+		Arrays.sort(arrB);
+		return Arrays.equals(arrA, arrB);
+	}
 }
